@@ -21,11 +21,22 @@ spec:
           resources:
             limits:
               cpu: 2000m
-              memory: 512Mi
+              memory: 2000Mi
             requests:
-              cpu: 2000m
-              memory: 512Mi
+              cpu: 50m
+              memory: 50Mi
           ports:
-            - containerPort: 80
+            - containerPort: 
+          startupProbe:
+            tcpSocket:
+              port: 
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            tcpSocket:
+              port: 
+            initialDelaySeconds: 5
+            periodSeconds: 5
       imagePullSecrets:
         - name: regcred
